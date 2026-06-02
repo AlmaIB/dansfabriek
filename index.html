@@ -6,7 +6,6 @@
     <title>Dans Fabriek - Portfolio</title>
     <style>
         :root {
-            --side-padding: 30%; 
             --bg-color: #ffffff;
         }
 
@@ -15,21 +14,23 @@
         html, body {
             margin: 0;
             padding: 0;
-            min-height: 100%;
+            height: 100%;
             font-family: 'Helvetica', Arial, sans-serif;
             background-color: var(--bg-color);
         }
 
+        /* Zorgt ervoor dat de pagina altijd de volledige schermhoogte gebruikt */
         body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            min-height: 100vh; 
         }
 
         h1 {
             text-align: center;
             margin: 0;
-            padding: 20px 0;
+            padding: 40px 0 20px 0; /* Witruimte boven en onder de titel */
             font-size: 1.8rem;
             line-height: 0.9; 
             letter-spacing: 4px;
@@ -40,18 +41,18 @@
 
         h1 span { display: block; }
 
+        /* DE REVOLUTIONAIRE PARAGRAAF: Dit lost je probleem op! */
         .main-container {
             display: flex;
             flex-direction: column;
-            width: 100%;
-            padding: 0 var(--side-padding);
-            margin: auto auto; /* Centreert de fabriek netjes op het scherm */
-            max-width: 1200px;
+            width: 85%; /* Neemt netjes de ruimte in op kleinere schermen (mobiel) */
+            max-width: 420px; /* Capped de grootte op computers zodat hij nooit té reusachtig wordt */
+            margin: auto auto; /* Centreert de danser perfect verticaal en horizontaal */
         }
 
         .animation-block {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Dwingt exact de Procreate 1280x720 verhouding af */
+            aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding intact */
             background-color: #f5f5f5;
             display: flex;
             align-items: center;
@@ -62,7 +63,6 @@
             border: none;
         }
 
-        /* Zorgt dat de video perfect meeschaalt zonder te vervormen of te verschuiven */
         video {
             width: 100%;
             height: 100%;
@@ -88,7 +88,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            padding: 20px 0;
+            padding: 30px 0; /* Ruimte rondom de volumeknop */
             flex-shrink: 0;
         }
 
@@ -108,11 +108,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #999;
-        }
-
-        @media (max-width: 768px) {
-            :root { --side-padding: 10%; } /* Meer ruimte voor de video's op mobiel/tablet */
-            .main-container { margin: 20px auto; }
         }
     </style>
 </head>
