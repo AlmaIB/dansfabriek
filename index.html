@@ -19,7 +19,7 @@
             overflow: hidden; /* Schakelt scrollbalken permanent uit */
         }
 
-        /* AANGEPAST: space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
+        /* space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
         body {
             display: flex;
             flex-direction: column;
@@ -29,7 +29,7 @@
 
         h1 {
             text-align: center;
-            margin: 0; /* AANGEPAST: Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             font-size: 2rem;
             line-height: 0.9;
             letter-spacing: 4px;
@@ -89,10 +89,17 @@
             letter-spacing: 2px;
         }
 
+        /* AANGEPAST: Verbergt de custom cursor permanent op telefoons en tablets */
+        @media (pointer: coarse) {
+            #custom-cursor {
+                display: none !important;
+            }
+        }
+
         .footer {
             display: flex;
             justify-content: center;
-            margin: 0; /* AANGEPAST: Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             flex-shrink: 0;
         }
 
