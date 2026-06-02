@@ -57,7 +57,7 @@
         .animation-block {
             width: 100%;
             aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
-            background-color: var(--bg-color); /* AANGEPAST: Naar wit veranderd zodat de grijze naad permanent verdwijnt */
+            background-color: var(--bg-color); 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,6 +65,7 @@
             position: relative;
             overflow: hidden;
             border: none;
+            margin-bottom: -1px; /* AANGEPAST: Zorgt voor een mini-overlap van 1px zodat de naad 100% verdwijnt */
         }
 
         video {
