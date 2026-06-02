@@ -113,3 +113,100 @@
 
         .copyright {
             position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+
+        /* NIEUW: Maakt de titel en geluidsknop 25% kleiner op desktop schermen (vanaf 768px breedte) */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 1.5rem; /* 25% kleiner dan de originele 2rem */
+            }
+            .sound-btn {
+                font-size: 18px; /* 25% kleiner dan de originele 24px */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dans<span>Fabriek</span></h1>
+
+    <div class="main-container">
+        <div class="animation-block" id="block-1" data-state="1" onclick="changeAnimation(1)">
+            <video autoplay loop muted playsinline id="vid-1">
+                <source src="animatie1_fase1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="animation-block" id="block-2" data-state="1" onclick="changeAnimation(2)">
+            <video autoplay loop muted playsinline id="vid-2">
+                <source src="animatie2_fase1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="animation-block" id="block-3" data-state="1" onclick="changeAnimation(3)">
+            <video autoplay loop muted playsinline id="vid-3">
+                <source src="animatie3_fase1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div id="sound-icon" class="sound-btn" onclick="toggleSound()">🔇</div>
+    </div>
+
+    <div class="copyright">&copy; madebyalma</div>
+    <div id="custom-cursor">CLICK</div>
+
+    <audio id="bg-audio" loop>
+        <source src="SoundBoogie.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        const blocks = document.querySelectorAll('.animation-block');
+        const audio = document.getElementById('bg-audio');
+        const soundIcon = document.getElementById('sound-icon');
+
+        // Custom cursor
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        blocks.forEach(block => {
+            block.addEventListener('mouseenter', () => { cursor.style.display = 'block'; });
+            block.addEventListener('mouseleave', () => { cursor.style.display = 'none'; });
+        });
+
+        // Bestandsnamen per blok
+        const animaties = {
+            1: ["animatie1_fase1.mp4", "animatie1_fase2.mp4", "animatie1_fase3.mp4"],
+            2: ["animatie2_fase1.mp4", "animatie2_fase2.mp4", "animatie2_fase3.mp4"],
+            3: ["animatie3_fase1.mp4", "animatie3_fase2.mp4", "animatie3_fase3.mp4"]
+        };
+
+        function changeAnimation(blockNum) {
+            const block = document.getElementById(`block-${blockNum}`);
+            const video = document.getElementById(`vid-${blockNum}`);
+            
+            let state = parseInt(block.getAttribute('data-state'));
+            state = (state % 3) + 1;
+            block.setAttribute('data-state', state);
+
+            video.src = animaties[blockNum][state - 1];
+            video.play();
+        }
+
+        function toggleSound() {
+            if (audio.paused) { audio.play(); soundIcon.innerText = "🔊"; soundIcon.style.opacity = "1"; }
+            else { audio.pause(); soundIcon.innerText = "🔇"; soundIcon.style.opacity = "0.6"; }
+        }
+    </script>
+</body>
+</html>
