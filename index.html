@@ -57,7 +57,7 @@
         .animation-block {
             width: 100%;
             aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
-            background-color: #f5f5f5;
+            background-color: var(--bg-color); /* AANGEPAST: Naar wit veranderd zodat de grijze naad permanent verdwijnt */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -89,7 +89,7 @@
             letter-spacing: 2px;
         }
 
-        /* AANGEPAST: Verbergt de custom cursor permanent op telefoons en tablets */
+        /* Verbergt de custom cursor permanent op telefoons en tablets */
         @media (pointer: coarse) {
             #custom-cursor {
                 display: none !important;
