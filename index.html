@@ -19,17 +19,17 @@
             overflow: hidden; /* Schakelt scrollbalken permanent uit */
         }
 
-        /* space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
+        /* Centeert de lay-out compact in het midden; de witruimte boven en onder is hierdoor automatisch exact gelijk */
         body {
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
         }
 
         h1 {
             text-align: center;
-            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 0 0 2.5dvh 0; /* Gecorrigeerd: Een mooie, gecontroleerde witruimte tot de eerste animatie */
             font-size: 2rem;
             line-height: 0.9;
             letter-spacing: 4px;
@@ -46,8 +46,10 @@
             display: flex;
             flex-direction: column;
             width: 85vw;
-            /* DE GOUDEN FORMULE VOOR MOBIEL:
-               max-width zorgt ervoor dat het op mobiel perfect binnen het scherm blijft vallen */
+            /* DE GOUDEN FORMULE:
+               - Maximaal 360px breed op desktop zodat hij mooi compact blijft.
+               - Maximaal 32dvh op mobiel: dit dwingt de animatie om klein genoeg te worden
+                 zodat de geluidsknop ALTIJD gegarandeerd onderin je scherm past! */
             max-width: min(360px, 32dvh);
             margin: 0;
         }
@@ -95,23 +97,10 @@
             }
         }
 
-        /* NIEUW: Desktop optimalisatie om de verhoudingen weer perfect klein en elegant te maken */
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 1.6rem; /* Maakt de titel op desktop weer compacter */
-            }
-            .main-container {
-                max-width: 380px; /* Geeft de blokken op desktop weer hun juiste verhouding */
-            }
-            .sound-btn {
-                font-size: 20px; /* Maakt de geluidsknop kleiner en subtieler op desktop */
-            }
-        }
-
         .footer {
             display: flex;
             justify-content: center;
-            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 2.5dvh 0 0 0; /* Gecorrigeerd: Exact dezelfde mooie tussenruimte als onder de titel */
             flex-shrink: 0;
         }
 
