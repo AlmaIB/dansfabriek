@@ -19,17 +19,17 @@
             overflow: hidden; /* Schakelt scrollbalken permanent uit */
         }
 
-        /* Centeert de lay-out compact in het midden; de witruimte boven en onder is hierdoor automatisch exact gelijk */
+        /* space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
         }
 
         h1 {
             text-align: center;
-            margin: 0 0 2.5dvh 0; /* Gecorrigeerd: Een mooie, gecontroleerde witruimte tot de eerste animatie */
+            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             font-size: 2rem;
             line-height: 0.9;
             letter-spacing: 4px;
@@ -57,7 +57,7 @@
         .animation-block {
             width: 100%;
             aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
-            background-color: var(--bg-color); 
+            background-color: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,7 +65,6 @@
             position: relative;
             overflow: hidden;
             border: none;
-            margin-bottom: -1px; /* Zorgt voor een mini-overlap van 1px zodat de naad 100% verdwijnt */
         }
 
         video {
@@ -90,7 +89,7 @@
             letter-spacing: 2px;
         }
 
-        /* Verbergt de custom cursor permanent op telefoons en tablets */
+        /* AANGEPAST: Verbergt de custom cursor permanent op telefoons en tablets */
         @media (pointer: coarse) {
             #custom-cursor {
                 display: none !important;
@@ -100,7 +99,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            margin: 2.5dvh 0 0 0; /* Gecorrigeerd: Exact dezelfde mooie tussenruimte als onder de titel */
+            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             flex-shrink: 0;
         }
 
