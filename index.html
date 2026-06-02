@@ -57,7 +57,7 @@
         .animation-block {
             width: 100%;
             aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
-            background-color: #f5f5f5;
+            background-color: transparent; /* AANGEPAST: Geen achtergrondkleur om grijze lijnen te voorkomen */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,14 +79,14 @@
             pointer-events: none;
             display: none;
             font-weight: 900;
-            font-size: 11px;
+            font-size: 6px; /* AANGEPAST: Font size gehalveerd voor een kleinere cursor */
             color: #fff;
             z-index: 9999;
             transform: translate(-50%, -50%);
             background: #000;
-            padding: 5px 10px;
+            padding: 3px 6px; /* AANGEPAST: Padding gehalveerd voor een kleinere balk */
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px; /* AANGEPAST: Letter spacing gehalveerd voor de verhouding */
         }
 
         /* AANGEPAST: Verbergt de custom cursor permanent op telefoons en tablets */
@@ -120,16 +120,6 @@
             letter-spacing: 1px;
             color: #999;
             font-family: Helvetica, Arial, sans-serif;
-        }
-
-        /* NIEUW: Maakt de titel en geluidsknop 25% kleiner op desktop schermen (vanaf 768px breedte) */
-        @media (min-width: 768px) {
-            h1 {
-                font-size: 1.5rem; /* 25% kleiner dan de originele 2rem */
-            }
-            .sound-btn {
-                font-size: 18px; /* 25% kleiner dan de originele 24px */
-            }
         }
     </style>
 </head>
