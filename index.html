@@ -14,29 +14,28 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100dvh; /* Volledige dynamische hoogte van het scherm */
+            height: 100dvh; /* dvh corrigeert de app-balken van o.a. WhatsApp en Safari op mobiel */
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            overflow: hidden; /* Schakelt scrollbalken permanent uit */
+            overflow: hidden; /* Voorkomt dat je ooit kunt scrollen: alles blijft in beeld */
         }
 
-        /* Centeert de gehele lay-out als één compact blok in het midden van het scherm */
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center; 
-            align-items: center;
+            justify-content: space-between;
         }
 
         h1 {
             text-align: center;
-            margin: 0 0 2dvh 0; /* Brengt de titel heel dicht naar de eerste animatie (2% van schermhoogte) */
-            font-size: 2rem;
+            margin: 0;
+            padding: 3dvh 0 1dvh 0; /* Schaalbare witruimte boven de titel */
+            font-size: 1.9rem;
             line-height: 0.9; 
             letter-spacing: 4px;
             text-transform: uppercase;
-            /* Arial Black zorgt ervoor dat de letters ook op iPhones/iPads extreem dik en krachtig zijn */
-            font-family: "Arial Black", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-            font-weight: 900;
+            font-weight: 900; /* Maximale dikte */
+            -webkit-font-smoothing: antialiased; /* Maakt letters extra strak en dik op iOS */
             flex-shrink: 0;
         }
 
@@ -46,17 +45,21 @@
             display: flex;
             flex-direction: column;
             width: 85vw;
-            /* DE GOUDEN FORMULE: 
-               - Maximaal 360px breed op desktop zodat hij mooi compact blijft.
-               - Maximaal 32dvh op mobiel: dit dwingt de animatie om klein genoeg te worden 
-                 zodat de geluidsknop ALTIJD gegarandeerd onderin je scherm past! */
-            max-width: min(360px, 32dvh); 
-            margin: 0; 
+            max-width: 420px;
+            margin: auto auto; /* Centreert de danser perfect in de overgebleven ruimte */
+        }
+
+        /* DE MOBIELE FIX VOOR DE HOOGTE: Zorgt dat de volumeknop áltijd past */
+        @media (max-width: 768px), (max-height: 750px) {
+            .main-container {
+                width: 70vw; /* Iets meer witruimte aan de zijkanten op mobiel */
+                max-width: min(300px, 33dvh); /* Schaalt de danser omlaag als het scherm kort is */
+            }
         }
 
         .animation-block {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
+            aspect-ratio: 16 / 9; /* Blokken blijven perfect sluitend */
             background-color: #f5f5f5;
             display: flex;
             align-items: center;
@@ -92,7 +95,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            margin-top: 2dvh; /* Brengt de volumeknop heel dicht onder de onderste animatie */
+            padding: 1dvh 0 3dvh 0; /* Witruimte rondom de knop */
             flex-shrink: 0;
         }
 
@@ -112,7 +115,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #999;
-            font-family: Helvetica, Arial, sans-serif;
         }
     </style>
 </head>
