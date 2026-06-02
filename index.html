@@ -14,12 +14,11 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100dvh; /* Volledige dynamische hoogte van het scherm */
+            height: 100dvh;
             background-color: var(--bg-color);
-            overflow: hidden; /* Schakelt scrollbalken permanent uit */
+            overflow: hidden;
         }
 
-        /* space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
         body {
             display: flex;
             flex-direction: column;
@@ -29,12 +28,11 @@
 
         h1 {
             text-align: center;
-            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 0;
             font-size: 2rem;
             line-height: 0.9;
             letter-spacing: 4px;
             text-transform: uppercase;
-            /* Arial Black zorgt ervoor dat de letters ook op iPhones/iPads extreem dik en krachtig zijn */
             font-family: "Arial Black", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
             font-weight: 900;
             flex-shrink: 0;
@@ -46,18 +44,14 @@
             display: flex;
             flex-direction: column;
             width: 85vw;
-            /* DE GOUDEN FORMULE:
-               - Maximaal 360px breed op desktop zodat hij mooi compact blijft.
-               - Maximaal 32dvh op mobiel: dit dwingt de animatie om klein genoeg te worden
-                 zodat de geluidsknop ALTIJD gegarandeerd onderin je scherm past! */
             max-width: min(360px, 32dvh);
             margin: 0;
         }
 
         .animation-block {
             width: 100%;
-            aspect-ratio: 16 / 9; /* Houdt de Procreate-verhouding perfect intact */
-            background-color: transparent; /* AANGEPAST: Geen achtergrondkleur om grijze lijnen te voorkomen */
+            aspect-ratio: 16 / 9;
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -79,19 +73,18 @@
             pointer-events: none;
             display: none;
             font-weight: 900;
-            font-size: 6px; /* AANGEPAST: Font size gehalveerd voor een kleinere cursor */
+            /* AANGEPAST: Duidelijk kleiner formaat */
+            font-size: 8px;
             color: #fff;
             z-index: 9999;
             transform: translate(-50%, -50%);
             background: #000;
-            padding: 3px 6px; /* AANGEPAST: Padding gehalveerd voor een kleinere balk */
+            padding: 2px 4px;
             text-transform: uppercase;
-            letter-spacing: 1px; /* AANGEPAST: Letter spacing gehalveerd voor de verhouding */
-            /* NIEUW: Zelfde lettertype als de h1 titel */
+            letter-spacing: 0.5px;
             font-family: "Arial Black", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
         }
 
-        /* AANGEPAST: Verbergt de custom cursor permanent op telefoons en tablets */
         @media (pointer: coarse) {
             #custom-cursor {
                 display: none !important;
@@ -101,7 +94,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            margin: 0; /* Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
+            margin: 0;
             flex-shrink: 0;
         }
 
@@ -124,17 +117,11 @@
             font-family: Helvetica, Arial, sans-serif;
         }
 
-        /* NIEUW: Verkleint de titel, geluidsknop en copyright met 25% exclusief op desktop */
+        /* Desktop verkleiningen */
         @media (min-width: 768px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-            .sound-btn {
-                font-size: 18px;
-            }
-            .copyright {
-                font-size: 6.75px;
-            }
+            h1 { font-size: 1.5rem; }
+            .sound-btn { font-size: 18px; }
+            .copyright { font-size: 6.75px; }
         }
     </style>
 </head>
@@ -148,13 +135,11 @@
                 <source src="animatie1_fase1.mp4" type="video/mp4">
             </video>
         </div>
-
         <div class="animation-block" id="block-2" data-state="1" onclick="changeAnimation(2)">
             <video autoplay loop muted playsinline id="vid-2">
                 <source src="animatie2_fase1.mp4" type="video/mp4">
             </video>
         </div>
-
         <div class="animation-block" id="block-3" data-state="1" onclick="changeAnimation(3)">
             <video autoplay loop muted playsinline id="vid-3">
                 <source src="animatie3_fase1.mp4" type="video/mp4">
@@ -179,7 +164,6 @@
         const audio = document.getElementById('bg-audio');
         const soundIcon = document.getElementById('sound-icon');
 
-        // Custom cursor
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
@@ -189,7 +173,6 @@
             block.addEventListener('mouseleave', () => { cursor.style.display = 'none'; });
         });
 
-        // Bestandsnamen per blok
         const animaties = {
             1: ["animatie1_fase1.mp4", "animatie1_fase2.mp4", "animatie1_fase3.mp4"],
             2: ["animatie2_fase1.mp4", "animatie2_fase2.mp4", "animatie2_fase3.mp4"],
@@ -199,11 +182,9 @@
         function changeAnimation(blockNum) {
             const block = document.getElementById(`block-${blockNum}`);
             const video = document.getElementById(`vid-${blockNum}`);
-            
             let state = parseInt(block.getAttribute('data-state'));
             state = (state % 3) + 1;
             block.setAttribute('data-state', state);
-
             video.src = animaties[blockNum][state - 1];
             video.play();
         }
