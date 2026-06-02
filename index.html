@@ -20,8 +20,9 @@
         body {
             display: flex;
             flex-direction: column;
+            /* AANGEPAST: We gebruiken nu een gap om de onderlinge afstand te bepalen */
             justify-content: center; 
-            gap: 5dvh; /* Standaard afstand */
+            gap: 5dvh; /* Dit regelt de afstand. 5dvh is de basis, je kunt dit getal verlagen voor minder ruimte */
             align-items: center;
         }
 
@@ -46,8 +47,6 @@
             width: 85vw;
             max-width: min(360px, 32dvh);
             margin: 0;
-            /* AANGEPAST: Trekt het blok 25% (1.25dvh) dichter naar de titel toe */
-            margin-top: -1.25dvh; 
         }
 
         .animation-block {
@@ -120,6 +119,7 @@
             h1 { font-size: 1.5rem; }
             .sound-btn { font-size: 18px; }
             .copyright { font-size: 6.75px; }
+            body { gap: 3.75dvh; } /* 25% kleiner dan de 5dvh hierboven */
         }
     </style>
 </head>
