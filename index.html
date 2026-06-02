@@ -19,17 +19,17 @@
             overflow: hidden; /* Schakelt scrollbalken permanent uit */
         }
 
-        /* Centeert de gehele lay-out als één compact blok in het midden van het scherm */
+        /* AANGEPAST: space-evenly verdeelt alle witruimte perfect en evenredig over de hele pagina */
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
         }
 
         h1 {
             text-align: center;
-            margin: 0 0 1dvh 0; /* AANGEPAST: Minder afstand, nu exact gelijk aan de onderkant */
+            margin: 0; /* AANGEPAST: Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             font-size: 2rem;
             line-height: 0.9;
             letter-spacing: 4px;
@@ -92,7 +92,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            margin-top: 1dvh; /* AANGEPAST: Nu exact dezelfde afstand als tussen de titel en eerste animatie */
+            margin: 0; /* AANGEPAST: Marge op 0 gezet zodat de flexbox de ruimte perfect gelijk verdeelt */
             flex-shrink: 0;
         }
 
