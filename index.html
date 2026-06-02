@@ -19,17 +19,19 @@
             overflow: hidden; /* Schakelt scrollbalken permanent uit */
         }
 
-        /* Centeert de gehele lay-out als één compact blok in het midden van het scherm */
+        /* AANGEPAST: space-between zet de elementen strak naar de randen, 
+           padding bepaalt de minimale afstand tot de absolute boven- en onderkant */
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center; 
+            justify-content: space-between; 
             align-items: center;
+            padding: 3dvh 0; 
         }
 
         h1 {
             text-align: center;
-            margin: 0 0 2dvh 0; /* Brengt de titel heel dicht naar de eerste animatie (2% van schermhoogte) */
+            margin: 0; /* AANGEPAST: Marge weggehaald zodat de flexbox de tussenruimtes perfect gelijk berekent */
             font-size: 2rem;
             line-height: 0.9; 
             letter-spacing: 4px;
@@ -92,7 +94,7 @@
         .footer {
             display: flex;
             justify-content: center;
-            margin-top: 2dvh; /* Brengt de volumeknop heel dicht onder de onderste animatie */
+            margin: 0; /* AANGEPAST: Marge weggehaald zodat de flexbox de tussenruimtes perfect gelijk berekent */
             flex-shrink: 0;
         }
 
